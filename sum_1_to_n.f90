@@ -1,14 +1,20 @@
-program sum_1_to_n
-    implicit none
-    integer(kind=8) :: n, i, total
+! ============================================================================
+! 程式名稱：sum_1_to_n.f90
+! 學生姓名：李柏穎 | 學號：414210392
+! 程式功能：計算從 1 累加到正整數 N 的總和 (1 + 2 + ... + N)
+! ============================================================================
 
-    print '(A)', 'Please enter a positive integer N:'
-    read(*, *) n
+program sum_1_to_n                                            ! 宣告主程式開始，程式名稱為 sum_1_to_n
+    implicit none                                             ! 關閉 Fortran 預設隱式型別規則，強制所有變數皆須明確宣告型別
+    integer(kind=8) :: n, i, total                            ! 宣告 64 位元長整數變數：n (輸入上限)、i (迴圈計數器)、total (累加總和)，避免大數溢位
 
-    total = 0
-    do i = 1, n
-        total = total + i
-    end do
+    print '(A)', 'Please enter a positive integer N:'         ! 於標準輸出 (螢幕) 印出提示字串，引導使用者輸入正整數 N
+    read(*, *) n                                              ! 從標準輸入 (鍵盤) 讀取使用者輸入的數值，並存入變數 n
 
-    print '(A, I0, A, I0)', 'Sum from 1 to ', n, ' = ', total
-end program sum_1_to_n
+    total = 0                                                 ! 將累加總和變數 total 初始化為 0，確保計算起點正確
+    do i = 1, n                                               ! 開始 DO 迴圈：計數變數 i 從 1 開始，每次遞增 1，直到 n 為止
+        total = total + i                                     ! 將目前的迴圈計數值 i 累加至總和變數 total 中
+    end do                                                    ! 結束 DO 迴圈區塊
+
+    print '(A, I0, A, I0)', 'Sum from 1 to ', n, ' = ', total ! 以格式化輸出印出最終計算結果 (I0 代表緊湊輸出整數不留多餘空白)
+end program sum_1_to_n                                        ! 宣告主程式 sum_1_to_n 結束
